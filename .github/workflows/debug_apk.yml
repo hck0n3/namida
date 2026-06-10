@@ -7,7 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
+      - name: Init language submodule only
+        run: git submodule update --init external/language || true
       - uses: subosito/flutter-action@v2
         with:
           flutter-version-file: pubspec.yaml
